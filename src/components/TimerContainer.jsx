@@ -55,7 +55,6 @@ function TimerContainer({ onClick, name, grainsTime }) {
     if (btnText === `Don't forget to stir!` || btnText === `STOP`) return;
     const initialTotal = timeLeft.total;
 
-    console.log(hover);
     const interval = setInterval(() => {
       timeLeft = getTimeLeft(end);
       updateTimer();

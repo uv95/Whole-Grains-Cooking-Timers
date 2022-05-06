@@ -22,6 +22,13 @@ body {
   position: relative;
 }
 
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .header {
   /* position: fixed; */
   /* top: 0; */
@@ -239,6 +246,10 @@ body {
 
 .no-hover {
   pointer-events: none;
+}
+
+.hidden {
+  display: none;
 }
 
 /* MEDIA */

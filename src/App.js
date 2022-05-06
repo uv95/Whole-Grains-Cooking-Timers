@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import GrainsContainer from './components/GrainsContainer';
 import TimerContainer from './components/TimerContainer';
@@ -8,6 +7,7 @@ function App() {
   const [showTimer, setShowTimer] = useState(false);
   const [timerName, setTimerName] = useState('');
   const [grainsTime, setGrainsTime] = useState(15);
+  const [loading, setLoading] = useState(true);
 
   const handleToggleTimer = function (e) {
     if (
@@ -36,14 +36,22 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      document.querySelector('.grains-container').classList.remove('hidden');
+      document.querySelector('.spinner').classList.add('hidden');
+      setLoading(false);
+    });
+  }, []);
+
   return (
     <main className="main">
       <Header />
       {!showTimer ? (
-        <GrainsContainer onClick={handleToggleTimer} />
+        <GrainsContainer loading={loading} onClick={handleToggleTimer} />
       ) : (
         <>
-          <GrainsContainer onClick={handleToggleTimer} />
+          <GrainsContainer loading={loading} onClick={handleToggleTimer} />
           <TimerContainer
             onClick={handleToggleTimer}
             name={timerName}
